@@ -4,7 +4,8 @@ datos requeridos se encuentran en el archivo data.csv. En este laboratorio
 solo puede utilizar las funciones y librerias basicas de python. No puede
 utilizar pandas, numpy o scipy.
 """
-
+import fileinput
+import glob
 
 def pregunta_01():
     """
@@ -14,3 +15,9 @@ def pregunta_01():
     214
 
     """
+    file_path = "files/input/data.csv"
+    files = glob.glob(file_path)
+    suma = 0
+    for line in fileinput.input(files=files):
+        suma += int(line.split("\t")[1])
+    return suma
